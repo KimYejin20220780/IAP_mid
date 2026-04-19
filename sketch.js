@@ -20,7 +20,10 @@ function setup() {
   fill(255, 255, 0);
   arc(pacX, pacY, 40, 40, PI/4.5, PI/0.55);
 
-  
+  for (let x = 50; x < width; x += 60) {
+    for (let y = 50; y < height; y += 60) {
+    }
+  }
 }
 
 function draw() {
