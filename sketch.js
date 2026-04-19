@@ -23,7 +23,7 @@ function draw() {
     image(map, 0, 0);
     arc(pacX, pacY, 60, 60, PI/4.5, PI/0.55);
     pacX -= 3;
-    let c = map.get(pacX, pacY); // 여기서 작성!
+    let c = map.get(pacX -30, pacY -30 || pacX -30, pacY +30);
     if (abs(red(c) - 23) < 10 && abs(green(c) - 142) < 10 && abs(blue(c) - 174) < 10) {
       pacX += 3;
     }
@@ -33,18 +33,30 @@ function draw() {
     image(map, 0, 0);
     arc(pacX, pacY, 60, 60, PI/4.5, PI/0.55);
     pacX += 3;
+    let c = map.get(pacX +30, pacY);
+    if (abs(red(c) - 23) < 10 && abs(green(c) - 142) < 10 && abs(blue(c) - 174) < 10) {
+      pacX -= 3;
+    }
   }
 
   if (keyIsDown(UP_ARROW) === true) {
     image(map, 0, 0);
     arc(pacX, pacY, 60, 60, PI/4.5, PI/0.55);
     pacY -= 3;
+    let c = map.get(pacX, pacY-30);
+    if (abs(red(c) - 23) < 10 && abs(green(c) - 142) < 10 && abs(blue(c) - 174) < 10) {
+      pacY += 3;
+    }
   }
 
   if (keyIsDown(DOWN_ARROW) === true) {
     image(map, 0, 0);
     arc(pacX, pacY, 60, 60, PI/4.5, PI/0.55);
     pacY += 3;
+    let c = map.get(pacX, pacY+30);
+    if (abs(red(c) - 23) < 10 && abs(green(c) - 142) < 10 && abs(blue(c) - 174) < 10) {
+      pacY -= 3;
+    }
   }
 }
 
