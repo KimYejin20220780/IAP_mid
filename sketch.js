@@ -223,5 +223,14 @@ function draw() {
     text("Press 'R' to Restart", width/2, height/2 + 60);
   }
 
+  function keyPressed() {
+    if (gameState === "FINISHED") {
+      if (key === 'r' || key === 'R') {
+        resetGame();
+      }
+    }
+  }
+  
+
 }
 
