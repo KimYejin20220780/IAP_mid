@@ -10,10 +10,10 @@ function preload(){
 function setup() {
   createCanvas(2816, 1536);
   background(0);
+  image(map, 0, 0);
 }
 
 function draw() {
-  image(map, 0, 0);
   noStroke();
   fill(255, 255, 0);
   arc(pacX, pacY, 60, 60, PI/4.5, PI/0.55);
@@ -21,8 +21,15 @@ function draw() {
 }
 
 function keyPressed(){
+    image(map, 0, 0);
     if(key==="w"){
         pacY = pacY-30;
+    }
+    if(key==="a"){
+        pacX = pacX-30;
+    }
+    if(key==="s"){
+        pacY = pacY+30;
     }
     if(key==="d"){
         pacX = pacX+30;
