@@ -5,6 +5,7 @@ let pacY = 770; //팩맨 시작 좌표 (y)
 let dots = []; //점 배열
 let score = 0;
 let life = 3;
+let gameState = "PLAY";
 
 let dotPositions = [
   {x: 620, y: 620}, //가로줄 4
