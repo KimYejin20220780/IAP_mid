@@ -22,6 +22,15 @@ function setup() {
 
   for (let x = 50; x < width; x += 60) {
     for (let y = 50; y < height; y += 60) {
+      
+      let c = map.get(x, y);
+      if (!(red(c) === 23 && green(c) === 142 && blue(c) === 174)) {
+        dots.push({
+          x: x,
+          y: y,
+          isVisible: true
+        });
+      }
     }
   }
 }
