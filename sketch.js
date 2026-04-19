@@ -1,8 +1,10 @@
 let map;
+let mapF;
 let pacX = 300;
 let pacY = 770;
 
 function preload(){
+  mapF = loadImage("MapF.png");
   map = loadImage("Map.png");
 }
 
@@ -10,6 +12,7 @@ function preload(){
 function setup() {
   createCanvas(2816, 1536);
   background(0);
+  image(mapF, 0, 0);
   image(map, 0, 0);
 }
 
@@ -22,61 +25,64 @@ function draw() {
   if (keyIsDown(LEFT_ARROW) === true) {
     image(map, 0, 0);
     arc(pacX, pacY, 50, 50, PI/4.5, PI/0.55);
-    pacX -= 3;
-    let c0 = map.get(pacX - 25, pacY);
-    let c1 = map.get(pacX - 25, pacY - 25); 
-    let c2 = map.get(pacX - 25, pacY + 25);
+    pacX -= 5;
+    let c0 = mapF.get(pacX - 25, pacY);
+    let c1 = mapF.get(pacX - 25, pacY - 25); 
+    let c2 = mapF.get(pacX - 25, pacY + 25);
     let hit0 = abs(red(c0) - 23) < 10 && abs(green(c0) - 142) < 10 && abs(blue(c0) - 174) < 10;
     let hit1 = abs(red(c1) - 23) < 10 && abs(green(c1) - 142) < 10 && abs(blue(c1) - 174) < 10;
     let hit2 = abs(red(c2) - 23) < 10 && abs(green(c2) - 142) < 10 && abs(blue(c2) - 174) < 10;
 
     if (hit0 || hit1 || hit2) {
-      pacX += 3;
+      pacX += 5;
     }
   }
 
   if (keyIsDown(RIGHT_ARROW) === true) {
     image(map, 0, 0);
     arc(pacX, pacY, 50, 50, PI/4.5, PI/0.55);
-    pacX += 3;
-    let c1 = map.get(pacX + 25, pacY - 25);
-    let c2 = map.get(pacX + 25, pacY + 25); 
-    
+    pacX += 5;
+    let c0 = mapF.get(pacX + 25, pacY);
+    let c1 = mapF.get(pacX + 25, pacY - 25);
+    let c2 = mapF.get(pacX + 25, pacY + 25); 
+    let hit0 = abs(red(c0) - 23) < 10 && abs(green(c0) - 142) < 10 && abs(blue(c0) - 174) < 10;
     let hit1 = abs(red(c1) - 23) < 10 && abs(green(c1) - 142) < 10 && abs(blue(c1) - 174) < 10;
     let hit2 = abs(red(c2) - 23) < 10 && abs(green(c2) - 142) < 10 && abs(blue(c2) - 174) < 10;
     
-    if (hit1 || hit2) {
-      pacX -= 3;
+    if (hit0 || hit1 || hit2) {
+      pacX -= 5;
     }
   }
 
   if (keyIsDown(UP_ARROW) === true) {
     image(map, 0, 0);
     arc(pacX, pacY, 50, 50, PI/4.5, PI/0.55);
-    pacY -= 3;
-    let c1 = map.get(pacX - 25, pacY - 25);
-    let c2 = map.get(pacX + 25, pacY - 25);
-    
+    pacY -= 5;
+    let c0 = mapF.get(pacX, pacY - 25);
+    let c1 = mapF.get(pacX - 25, pacY - 25);
+    let c2 = mapF.get(pacX + 25, pacY - 25);
+    let hit0 = abs(red(c0) - 23) < 10 && abs(green(c0) - 142) < 10 && abs(blue(c0) - 174) < 10;
     let hit1 = abs(red(c1) - 23) < 10 && abs(green(c1) - 142) < 10 && abs(blue(c1) - 174) < 10;
     let hit2 = abs(red(c2) - 23) < 10 && abs(green(c2) - 142) < 10 && abs(blue(c2) - 174) < 10;
     
-    if (hit1 || hit2) {
-      pacY += 3;
+    if (hit0 || hit1 || hit2) {
+      pacY += 5;
     }
   }
 
   if (keyIsDown(DOWN_ARROW) === true) {
     image(map, 0, 0);
     arc(pacX, pacY, 50, 50, PI/4.5, PI/0.55);
-    pacY += 3;
-    let c1 = map.get(pacX - 25, pacY + 25);
-    let c2 = map.get(pacX + 25, pacY + 25);
-    
+    pacY += 5;
+    let c0 = mapF.get(pacX, pacY + 25);
+    let c1 = mapF.get(pacX - 25, pacY + 25);
+    let c2 = mapF.get(pacX + 25, pacY + 25);
+    let hit0 = abs(red(c0) - 23) < 10 && abs(green(c0) - 142) < 10 && abs(blue(c0) - 174) < 10;
     let hit1 = abs(red(c1) - 23) < 10 && abs(green(c1) - 142) < 10 && abs(blue(c1) - 174) < 10;
     let hit2 = abs(red(c2) - 23) < 10 && abs(green(c2) - 142) < 10 && abs(blue(c2) - 174) < 10;
     
-    if (hit1 || hit2) {
-      pacY -= 3;
+    if (hit0 || hit1 || hit2) {
+      pacY -= 5;
     }
   }
 }
