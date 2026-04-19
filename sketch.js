@@ -231,6 +231,19 @@ function draw() {
     }
   }
   
+  function resetGame() {
+    score = 0;
+    life = 3;
+    pacX = 300;
+    pacY = 770;
+    
+    for (let d of dots) {
+      d.isVisible = true;
+    }
+    
+    gameState = "PLAY";
+    loop(); 
+  }
 
 }
 
