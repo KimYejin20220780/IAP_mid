@@ -96,6 +96,7 @@ function setup() {
 
 function draw() {
   if (gameState === "PLAY") { //플레이 상태
+    playGame();
     
     function playGame() { //플레이 게임 
       if (keyIsDown(LEFT_ARROW) === true) {
@@ -208,6 +209,6 @@ function draw() {
   else if (gameState === "FINISHED") {
     showGameOver();
   }
-  
+
 }
 
