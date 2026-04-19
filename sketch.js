@@ -18,23 +18,33 @@ function draw() {
   fill(255, 255, 0);
   arc(pacX, pacY, 60, 60, PI/4.5, PI/0.55);
   
+
+  if (keyIsDown(LEFT_ARROW) === true) {
+    image(map, 0, 0);
+    arc(pacX, pacY, 60, 60, PI/4.5, PI/0.55);
+    pacX -= 2;
+  }
+
+  if (keyIsDown(RIGHT_ARROW) === true) {
+    image(map, 0, 0);
+    arc(pacX, pacY, 60, 60, PI/4.5, PI/0.55);
+    pacX += 2;
+  }
+
+  if (keyIsDown(UP_ARROW) === true) {
+    image(map, 0, 0);
+    arc(pacX, pacY, 60, 60, PI/4.5, PI/0.55);
+    pacY -= 2;
+  }
+
+  if (keyIsDown(DOWN_ARROW) === true) {
+    image(map, 0, 0);
+    arc(pacX, pacY, 60, 60, PI/4.5, PI/0.55);
+    pacY += 2;
+  }
 }
 
-function keyIsDown(){
-    image(map, 0, 0);
-    if (key === "w") {
-      pacY -= 30; 
-    }
-    if(key==="a"){
-        pacX = pacX-30;
-    }
-    if(key==="s"){
-        pacY = pacY+30;
-    }
-    if(key==="d"){
-        pacX = pacX+30;
-    }
-}
+
 
 
 
