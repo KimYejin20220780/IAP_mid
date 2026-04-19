@@ -17,26 +17,28 @@ function draw() {
   noStroke();
   fill(255, 255, 0);
   arc(pacX, pacY, 60, 60, PI/4.5, PI/0.55);
-
+  
 }
 
 function keyIsDown(){
-    let wallDist = 30;
-    image(map, 0, 0);
-    if (key === "w") {
-      pacY -= 30; 
-      let c = map.get(pacX, pacY - wallDist); 
-      if (abs(red(c) - 23) < 10 && abs(green(c) - 142) < 10 && abs(blue(c) - 174) < 10) {
-        pacY += 30;
-      }
-    }
-    if(key==="a"){
-        pacX = pacX-30;
-    }
-    if(key==="s"){
-        pacY = pacY+30;
-    }
-    if(key==="d"){
-        pacX = pacX+30;
-    }
+    
 }
+
+
+
+
+// function keyPressed(){
+//     image(map, 0, 0);
+//     if (key === "w") {
+//       pacY -= 30; 
+//     }
+//     if(key==="a"){
+//         pacX = pacX-30;
+//     }
+//     if(key==="s"){
+//         pacY = pacY+30;
+//     }
+//     if(key==="d"){
+//         pacX = pacX+30;
+//     }
+// }
