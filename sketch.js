@@ -4,6 +4,7 @@ let pacX = 300; //팩맨 시작 좌표 (x)
 let pacY = 770; //팩맨 시작 좌표 (y)
 let dots = []; //점 배열
 let score = 0;
+let life = 3;
 
 let dotPositions = [
   {x: 620, y: 620}, //가로줄 4
@@ -187,11 +188,11 @@ function draw() {
     }
   }
 
-
-
   fill(255);
   textSize(50);
   text("Score: " + score, 35, 80);
+  text("Life: " + life, 35, 150);
+  
 
 
 
