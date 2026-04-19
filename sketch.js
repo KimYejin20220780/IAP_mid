@@ -96,8 +96,10 @@ function setup() {
 
 function draw() {
   image(map, 0, 0);
+  fill(255, 255, 0);
   arc(pacX, pacY, 40, 40, PI/4.5, PI/0.55);
   
+
   if (gameState === "PLAY") { //플레이 상태
     playGame();
     
@@ -197,8 +199,9 @@ function draw() {
 
       fill(255);
       textSize(50);
-      text("Score: " + score, 35, 80);
-      text("Life: " + life, 35, 150);
+      textAlign(LEFT, TOP); 
+      text("Score: " + score, 35, 50);
+      text("Life: " + life, 35, 120);
       
 
 
@@ -240,6 +243,7 @@ function resetGame() {
   life = 3;
   pacX = 300;
   pacY = 770;
+  
   
   for (let d of dots) {
     d.isVisible = true;
