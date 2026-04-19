@@ -39,6 +39,7 @@ function draw() {
 
   if (keyIsDown(LEFT_ARROW) === true) {
     image(map, 0, 0);
+    fill(255, 255, 0);
     arc(pacX, pacY, 40, 40, 3.8, 2.4);
     pacX -= 5;
     let c0 = mapF.get(pacX - 20, pacY);
@@ -55,6 +56,7 @@ function draw() {
 
   if (keyIsDown(RIGHT_ARROW) === true) {
     image(map, 0, 0);
+    fill(255, 255, 0);
     arc(pacX, pacY, 40, 40, PI/4.5, PI/0.55);
     pacX += 5;
     let c0 = mapF.get(pacX + 20, pacY);
@@ -71,6 +73,7 @@ function draw() {
 
   if (keyIsDown(UP_ARROW) === true) {
     image(map, 0, 0);
+    fill(255, 255, 0);
     arc(pacX, pacY, 40, 40, -0.9, -2.2);
     pacY -= 5;
     let c0 = mapF.get(pacX, pacY - 20);
@@ -87,6 +90,7 @@ function draw() {
 
   if (keyIsDown(DOWN_ARROW) === true) {
     image(map, 0, 0);
+    fill(255, 255, 0);
     arc(pacX, pacY, 40, 40, 2.3, 0.9);
     pacY += 5;
     let c0 = mapF.get(pacX, pacY + 20);
@@ -104,9 +108,18 @@ function draw() {
 
   for (let i = 0; i < dots.length; i++) {
     let d = dots[i];
-    fill(255);
-    noStroke();
-    ellipse(d.x, d.y, 10, 10);
+
+    if (d.isVisible) {
+      fill(255);
+      noStroke();
+      ellipse(d.x, d.y, 10, 10);
+
+      let distance = dist(pacX, pacY, d.x, d.y);
+      if (distance < 20) { 
+        d.isVisible = false; 
+        score += 10;     
+      }
+    }
   }
 
 }
