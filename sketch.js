@@ -25,6 +25,9 @@ function draw() {
     pacX -= 3;
     let c1 = map.get(pacX - 25, pacY - 25); 
     let c2 = map.get(pacX - 25, pacY + 25);
+    let hit1 = abs(red(c1) - 23) < 10 && abs(green(c1) - 142) < 10 && abs(blue(c1) - 174) < 10;
+    let hit2 = abs(red(c2) - 23) < 10 && abs(green(c2) - 142) < 10 && abs(blue(c2) - 174) < 10;
+
     if (abs(red(c) - 23) < 10 && abs(green(c) - 142) < 10 && abs(blue(c) - 174) < 10) {
       pacX += 3;
     }
