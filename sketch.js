@@ -24,7 +24,7 @@ function draw() {
     arc(pacX, pacY, 60, 60, PI/4.5, PI/0.55);
     pacX -= 3;
     let c = map.get(pacX, pacY); // 여기서 작성!
-    if (red(c) === 23 && green(c) === 142 && blue(c) === 174) {
+    if (abs(red(c) - 23) < 10 && abs(green(c) - 142) < 10 && abs(blue(c) - 174) < 10) {
       pacX += 3;
     }
   }
