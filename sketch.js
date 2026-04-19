@@ -1,5 +1,6 @@
 let map; //눈에 보이는 지도
 let mapF; //벽 모서리 채운 지도
+let enemy1;
 let pacX = 300; //팩맨 시작 좌표 (x)
 let pacY = 770; //팩맨 시작 좌표 (y)
 let dots = []; //점 배열
@@ -71,6 +72,7 @@ let dotPositions = [
 function preload(){
   mapF = loadImage("MapF.png");
   map = loadImage("Map.png");
+  enemy1 = loadImage("Enemy1.png");
 }
 
 
