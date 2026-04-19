@@ -5,7 +5,7 @@ let pacY = 770; //팩맨 시작 좌표 (y)
 let dots = []; //점 배열
 let score = 0;
 let life = 3;
-let gameState = "PLAY";
+let gameState = "PLAY"; //초기 게임 상태 = 진행 상태
 
 let dotPositions = [
   {x: 620, y: 620}, //가로줄 4
@@ -78,10 +78,10 @@ function setup() {
   createCanvas(2816, 1536);
   background(0);
   image(mapF, 0, 0); //색 감지를 위해 불러옴
-  image(map, 0, 0);
-  noStroke();
-  fill(255, 255, 0);
-  arc(pacX, pacY, 40, 40, PI/4.5, PI/0.55);
+  // image(map, 0, 0);
+  // noStroke();
+  // fill(255, 255, 0);
+  // arc(pacX, pacY, 40, 40, PI/4.5, PI/0.55);
 
   for (let i = 0; i < dotPositions.length; i++) { //점 배열 기반으로 점 생성
     dots.push({
@@ -95,15 +95,14 @@ function setup() {
 }
 
 function draw() {
-  image(map, 0, 0);
-  fill(255, 255, 0);
-  arc(pacX, pacY, 40, 40, PI/4.5, PI/0.55);
-  
+  image(map, 0, 0); //첫 화면 세팅
+  fill(255, 255, 0); //첫 화면 세팅
+  arc(pacX, pacY, 40, 40, PI/4.5, PI/0.55); //첫 화면 세팅
 
-  if (gameState === "PLAY") { //플레이 상태
-    playGame();
+  if (gameState === "PLAY") { //게임 진행 상태일 떄
+    playGame(); //게임 실행
     
-    function playGame() { //플레이 게임 
+    function playGame() {
       if (keyIsDown(LEFT_ARROW) === true) {
         image(map, 0, 0); //잔상을 지우기 위해 map을 다시 불러옴
         fill(255, 255, 0); //점과 겹치지 않게 노란색도 다시 불러옴
@@ -199,7 +198,7 @@ function draw() {
 
       fill(255);
       textSize(50);
-      textAlign(LEFT, TOP); 
+      textAlign(LEFT, TOP); //게임 종료 때 바꾼 거 초기화
       text("Score: " + score, 35, 50);
       text("Life: " + life, 35, 120);
       
@@ -212,11 +211,11 @@ function draw() {
 
   }//play의 중괄호
 
-  else if (gameState === "FINISHED") {
+  else if (gameState === "FINISHED") { //if 게임 실행 상태일 때의 else
     showGameClear();
   }
 
-  function showGameClear() {
+  function showGameClear() { //클리어 창 표시
     background(0, 150); 
     
     fill(255, 255, 0);
@@ -224,28 +223,28 @@ function draw() {
     textSize(80);
     text("GAME CLEAR!", width/2, height/2 - 20);
     
-    textSize(30);
+    textSize(50);
     fill(255);
     text("Press 'R' to Restart", width/2, height/2 + 60);
   }
 }
 
-function keyPressed() {
+function keyPressed() { //재시작 
   if (gameState === "FINISHED") {
-    if (key === 'r' || key === 'R') {
+    if (key === 'r' || key === 'R') { //대소문자 구분X
       resetGame();
     }
   }
 }
   
-function resetGame() {
+function resetGame() { //변수값 초기화
   score = 0;
   life = 3;
   pacX = 300;
   pacY = 770;
   
   
-  for (let d of dots) {
+  for (let d of dots) { //배열도 초기화
     d.isVisible = true;
   }
   
