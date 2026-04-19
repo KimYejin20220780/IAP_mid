@@ -163,6 +163,13 @@ function draw() {
   }
 
 
+  if (pacX < 10) { //워프
+    pacX = 2780; 
+  } 
+  else if (pacX > 2806) { 
+    pacX = 36;  
+  }
+
 
   for (let i = 0; i < dots.length; i++) { //배치된 점의 충동 확인
     let d = dots[i];
