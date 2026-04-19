@@ -204,10 +204,24 @@ function draw() {
       }
     }///플레이게임 중괄호
 
+    function showGameClear() {
+      // 배경을 어둡게 덮기
+      background(0, 150); 
+      
+      fill(255, 255, 0);
+      textAlign(CENTER);
+      textSize(80);
+      text("GAME CLEAR!", width/2, height/2 - 20);
+      
+      textSize(30);
+      fill(255);
+      text("Press 'R' to Restart", width/2, height/2 + 60);
+    }
+
   }//play의 중괄호
 
   else if (gameState === "FINISHED") {
-    showGameOver();
+    showGameClear();
   }
 
 }
