@@ -5,6 +5,13 @@ let pacY = 770;
 let dots = [];
 let score = 0;
 
+let dotPositions = [
+  {x: 400, y: 770},
+  {x: 450, y: 800},
+  {x: 520, y: 650},
+  {x: 600, y: 300},
+];
+
 function preload(){
   mapF = loadImage("MapF.png");
   map = loadImage("Map.png");
@@ -20,19 +27,9 @@ function setup() {
   fill(255, 255, 0);
   arc(pacX, pacY, 40, 40, PI/4.5, PI/0.55);
 
-  for (let x = 50; x < width; x += 60) {
-    for (let y = 50; y < height; y += 60) {
-      
-      let c = map.get(x, y);
-      if (!(red(c) === 23 && green(c) === 142 && blue(c) === 174)) {
-        dots.push({
-          x: x,
-          y: y,
-          isVisible: true
-        });
-      }
-    }
-  }
+
+  
+  
 }
 
 function draw() {
@@ -106,21 +103,13 @@ function draw() {
   }
 
 
-  for (let i = 0; i < dots.length; i++) {
-    let d = dots[i];
 
-    if (d.isVisible) {
-      fill(255);
-      noStroke();
-      ellipse(d.x, d.y, 10, 10);
 
-      let distance = dist(pacX, pacY, d.x, d.y);
-      if (distance < 20) { 
-        d.isVisible = false; 
-        score += 10;     
-      }
-    }
-  }
+  fill(255);
+  textSize(32);
+  text("Score: " + score, 50, 50);
+
+
 
 }
 
