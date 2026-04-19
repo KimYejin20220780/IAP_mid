@@ -27,7 +27,13 @@ function setup() {
   fill(255, 255, 0);
   arc(pacX, pacY, 40, 40, PI/4.5, PI/0.55);
 
-
+  for (let i = 0; i < dotPositions.length; i++) {
+    dots.push({
+      x: dotPositions[i].x,
+      y: dotPositions[i].y,
+      isVisible: true
+    });
+  }
   
   
 }
