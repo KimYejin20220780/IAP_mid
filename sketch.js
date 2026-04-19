@@ -93,7 +93,12 @@ function draw() {
   }
 
 
-
+  for (let i = 0; i < dots.length; i++) {
+    let d = dots[i];
+    fill(255);
+    noStroke();
+    ellipse(d.x, d.y, 10, 10);
+  }
 
 }
 
