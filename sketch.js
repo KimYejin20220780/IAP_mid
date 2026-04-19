@@ -1,7 +1,7 @@
-let map;
+let map1;
 
 function preload(){
-    map = loadIma
+  map = loadImage("Map.png");
 }
 
 
@@ -10,6 +10,6 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  image(map, 0, 0);
 }
 
