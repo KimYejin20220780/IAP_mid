@@ -21,7 +21,19 @@ function draw() {
 }
 
 function keyIsDown(){
-    
+    image(map, 0, 0);
+    if (key === "w") {
+      pacY -= 30; 
+    }
+    if(key==="a"){
+        pacX = pacX-30;
+    }
+    if(key==="s"){
+        pacY = pacY+30;
+    }
+    if(key==="d"){
+        pacX = pacX+30;
+    }
 }
 
 
