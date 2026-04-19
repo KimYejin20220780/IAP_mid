@@ -21,12 +21,13 @@ function draw() {
 }
 
 function keyPressed(){
+    let wallDist = 30;
     image(map, 0, 0);
     if (key === "w") {
-    pacY = pacY - 30; 
-      let c = map.get(pacX, pacY); 
-      if (red(c) === 23 && green(c) === 142 && blue(c) === 174) {
-        pacY = pacY + 30; 
+      pacY -= 30; 
+      let c = map.get(pacX, pacY - wallDist); 
+      if (abs(red(c) - 23) < 10 && abs(green(c) - 142) < 10 && abs(blue(c) - 174) < 10) {
+        pacY += 30;
       }
     }
     if(key==="a"){
