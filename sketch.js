@@ -110,6 +110,23 @@ function draw() {
 
 
 
+  for (let i = 0; i < dots.length; i++) {
+    let d = dots[i];
+
+    if (d.isVisible) {
+      fill(255);
+      noStroke();
+      ellipse(d.x, d.y, 15, 15); 
+
+      let distance = dist(pacX, pacY, d.x, d.y);
+      if (distance < 30) { 
+        d.isVisible = false;
+        score += 10;
+      }
+    }
+  }
+
+
 
   fill(255);
   textSize(32);
