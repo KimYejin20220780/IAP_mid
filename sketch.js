@@ -22,25 +22,29 @@ function draw() {
   if (keyIsDown(LEFT_ARROW) === true) {
     image(map, 0, 0);
     arc(pacX, pacY, 60, 60, PI/4.5, PI/0.55);
-    pacX -= 2;
+    pacX -= 3;
+    let c = map.get(pacX, pacY); // 여기서 작성!
+    if (red(c) === 23 && green(c) === 142 && blue(c) === 174) {
+      pacX += 3;
+    }
   }
 
   if (keyIsDown(RIGHT_ARROW) === true) {
     image(map, 0, 0);
     arc(pacX, pacY, 60, 60, PI/4.5, PI/0.55);
-    pacX += 2;
+    pacX += 3;
   }
 
   if (keyIsDown(UP_ARROW) === true) {
     image(map, 0, 0);
     arc(pacX, pacY, 60, 60, PI/4.5, PI/0.55);
-    pacY -= 2;
+    pacY -= 3;
   }
 
   if (keyIsDown(DOWN_ARROW) === true) {
     image(map, 0, 0);
     arc(pacX, pacY, 60, 60, PI/4.5, PI/0.55);
-    pacY += 2;
+    pacY += 3;
   }
 }
 
