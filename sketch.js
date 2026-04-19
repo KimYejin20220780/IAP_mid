@@ -1,5 +1,6 @@
 let map;
-let pacX;
+let pacX = 300;
+let pacY = 770;
 
 function preload(){
   map = loadImage("Map.png");
@@ -15,13 +16,15 @@ function draw() {
   image(map, 0, 0);
   noStroke();
   fill(255, 255, 0);
-  arc(300, 770, 60, 60, PI/4.5, PI/0.55);
+  arc(pacX, pacY, 60, 60, PI/4.5, PI/0.55);
 
 }
 
 function keyPressed(){
-    background(0);
+    if(key==="w"){
+        pacY = pacY-30;
+    }
     if(key==="d"){
-        pacX = pacX+10;
+        pacX = pacX+30;
     }
 }
