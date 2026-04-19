@@ -211,17 +211,17 @@ function draw() {
   }
 
   function showGameClear() {
-      background(0, 150); 
-      
-      fill(255, 255, 0);
-      textAlign(CENTER, CENTER); 
-      textSize(80);
-      text("GAME CLEAR!", width/2, height/2 - 20);
-      
-      textSize(30);
-      fill(255);
-      text("Press 'R' to Restart", width/2, height/2 + 60);
-    }
+    background(0, 150); 
+    
+    fill(255, 255, 0);
+    textAlign(CENTER, CENTER); 
+    textSize(80);
+    text("GAME CLEAR!", width/2, height/2 - 20);
+    
+    textSize(30);
+    fill(255);
+    text("Press 'R' to Restart", width/2, height/2 + 60);
+  }
 
 }
 
