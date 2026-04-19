@@ -16,14 +16,15 @@ function setup() {
 function draw() {
   noStroke();
   fill(255, 255, 0);
-  arc(pacX, pacY, 60, 60, PI/4.5, PI/0.55);
+  arc(pacX, pacY, 50, 50, PI/4.5, PI/0.55);
   
 
   if (keyIsDown(LEFT_ARROW) === true) {
     image(map, 0, 0);
-    arc(pacX, pacY, 60, 60, PI/4.5, PI/0.55);
+    arc(pacX, pacY, 50, 50, PI/4.5, PI/0.55);
     pacX -= 3;
-    let c = map.get(pacX -30, pacY -30 || pacX -30, pacY +30);
+    let c1 = map.get(pacX - 25, pacY - 25); 
+    let c2 = map.get(pacX - 25, pacY + 25);
     if (abs(red(c) - 23) < 10 && abs(green(c) - 142) < 10 && abs(blue(c) - 174) < 10) {
       pacX += 3;
     }
@@ -31,7 +32,7 @@ function draw() {
 
   if (keyIsDown(RIGHT_ARROW) === true) {
     image(map, 0, 0);
-    arc(pacX, pacY, 60, 60, PI/4.5, PI/0.55);
+    arc(pacX, pacY, 50, 50, PI/4.5, PI/0.55);
     pacX += 3;
     let c = map.get(pacX +30, pacY);
     if (abs(red(c) - 23) < 10 && abs(green(c) - 142) < 10 && abs(blue(c) - 174) < 10) {
@@ -41,7 +42,7 @@ function draw() {
 
   if (keyIsDown(UP_ARROW) === true) {
     image(map, 0, 0);
-    arc(pacX, pacY, 60, 60, PI/4.5, PI/0.55);
+    arc(pacX, pacY, 50, 50, PI/4.5, PI/0.55);
     pacY -= 3;
     let c = map.get(pacX, pacY-30);
     if (abs(red(c) - 23) < 10 && abs(green(c) - 142) < 10 && abs(blue(c) - 174) < 10) {
@@ -51,7 +52,7 @@ function draw() {
 
   if (keyIsDown(DOWN_ARROW) === true) {
     image(map, 0, 0);
-    arc(pacX, pacY, 60, 60, PI/4.5, PI/0.55);
+    arc(pacX, pacY, 50, 50, PI/4.5, PI/0.55);
     pacY += 3;
     let c = map.get(pacX, pacY+30);
     if (abs(red(c) - 23) < 10 && abs(green(c) - 142) < 10 && abs(blue(c) - 174) < 10) {
@@ -80,5 +81,3 @@ function draw() {
 //         pacX = pacX+30;
 //     }
 // }
-
-//커밋 테스트2
