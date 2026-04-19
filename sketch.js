@@ -222,28 +222,27 @@ function draw() {
     fill(255);
     text("Press 'R' to Restart", width/2, height/2 + 60);
   }
+}
 
-  function keyPressed() {
-    if (gameState === "FINISHED") {
-      if (key === 'r' || key === 'R') {
-        resetGame();
-      }
+function keyPressed() {
+  if (gameState === "FINISHED") {
+    if (key === 'r' || key === 'R') {
+      resetGame();
     }
+  }
+}
+  
+function resetGame() {
+  score = 0;
+  life = 3;
+  pacX = 300;
+  pacY = 770;
+  
+  for (let d of dots) {
+    d.isVisible = true;
   }
   
-  function resetGame() {
-    score = 0;
-    life = 3;
-    pacX = 300;
-    pacY = 770;
-    
-    for (let d of dots) {
-      d.isVisible = true;
-    }
-    
-    gameState = "PLAY";
-    loop(); 
-  }
-
+  gameState = "PLAY";
+  loop(); 
 }
 
