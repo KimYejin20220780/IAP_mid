@@ -129,8 +129,8 @@ function draw() {
 
 
   fill(255);
-  textSize(32);
-  text("Score: " + score, 50, 50);
+  textSize(50);
+  text("Score: " + score, 35, 80);
 
 
 
