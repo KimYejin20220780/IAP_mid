@@ -23,12 +23,14 @@ function draw() {
     image(map, 0, 0);
     arc(pacX, pacY, 50, 50, PI/4.5, PI/0.55);
     pacX -= 3;
+    let c0 = map.get(pacX - 25, pacY);
     let c1 = map.get(pacX - 25, pacY - 25); 
     let c2 = map.get(pacX - 25, pacY + 25);
+    let hit0 = abs(red(c0) - 23) < 10 && abs(green(c0) - 142) < 10 && abs(blue(c0) - 174) < 10;
     let hit1 = abs(red(c1) - 23) < 10 && abs(green(c1) - 142) < 10 && abs(blue(c1) - 174) < 10;
     let hit2 = abs(red(c2) - 23) < 10 && abs(green(c2) - 142) < 10 && abs(blue(c2) - 174) < 10;
 
-    if (hit1 || hit2) {
+    if (hit0 || hit1 || hit2) {
       pacX += 3;
     }
   }
