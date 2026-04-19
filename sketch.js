@@ -80,3 +80,5 @@ function draw() {
 //         pacX = pacX+30;
 //     }
 // }
+
+//커밋 테스트2
