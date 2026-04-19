@@ -95,6 +95,7 @@ function setup() {
 }
 
 function draw() {
+  if (gameState === "PLAY") {
 
   if (keyIsDown(LEFT_ARROW) === true) {
     image(map, 0, 0); //잔상을 지우기 위해 map을 다시 불러옴
@@ -196,6 +197,14 @@ function draw() {
   
 
 
+  if (score >= 100) {
+    gameState = "FINISHED";
+  }
 
+
+  }//play의 중괄호
+  else if (gameState === "FINISHED") {
+    showGameOver();
+  }
 }
 
