@@ -22,8 +22,12 @@ function draw() {
 
 function keyPressed(){
     image(map, 0, 0);
-    if(key==="w"){
-        pacY = pacY-30;
+    if (key === "w") {
+    pacY = pacY - 30; 
+      let c = map.get(pacX, pacY); 
+      if (red(c) === 23 && green(c) === 142 && blue(c) === 174) {
+        pacY = pacY + 30; 
+      }
     }
     if(key==="a"){
         pacX = pacX-30;
