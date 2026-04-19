@@ -2,6 +2,8 @@ let map;
 let mapF;
 let pacX = 300;
 let pacY = 770;
+let dots = [];
+let score = 0;
 
 function preload(){
   mapF = loadImage("MapF.png");
@@ -14,17 +16,18 @@ function setup() {
   background(0);
   image(mapF, 0, 0);
   image(map, 0, 0);
-}
-
-function draw() {
   noStroke();
   fill(255, 255, 0);
   arc(pacX, pacY, 40, 40, PI/4.5, PI/0.55);
+
   
+}
+
+function draw() {
 
   if (keyIsDown(LEFT_ARROW) === true) {
     image(map, 0, 0);
-    arc(pacX, pacY, 40, 40, PI/4.5, PI/0.55);
+    arc(pacX, pacY, 40, 40, 3.8, 2.4);
     pacX -= 5;
     let c0 = mapF.get(pacX - 20, pacY);
     let c1 = mapF.get(pacX - 20, pacY - 20); 
@@ -56,7 +59,7 @@ function draw() {
 
   if (keyIsDown(UP_ARROW) === true) {
     image(map, 0, 0);
-    arc(pacX, pacY, 40, 40, PI/4.5, PI/0.55);
+    arc(pacX, pacY, 40, 40, -0.9, -2.2);
     pacY -= 5;
     let c0 = mapF.get(pacX, pacY - 20);
     let c1 = mapF.get(pacX - 20, pacY - 20);
@@ -72,7 +75,7 @@ function draw() {
 
   if (keyIsDown(DOWN_ARROW) === true) {
     image(map, 0, 0);
-    arc(pacX, pacY, 40, 40, PI/4.5, PI/0.55);
+    arc(pacX, pacY, 40, 40, 2.3, 0.9);
     pacY += 5;
     let c0 = mapF.get(pacX, pacY + 20);
     let c1 = mapF.get(pacX - 20, pacY + 20);
@@ -85,25 +88,9 @@ function draw() {
       pacY -= 5;
     }
   }
+
+
+
+
 }
 
-
-
-
-
-
-// function keyPressed(){
-//     image(map, 0, 0);
-//     if (key === "w") {
-//       pacY -= 30; 
-//     }
-//     if(key==="a"){
-//         pacX = pacX-30;
-//     }
-//     if(key==="s"){
-//         pacY = pacY+30;
-//     }
-//     if(key==="d"){
-//         pacX = pacX+30;
-//     }
-// }
