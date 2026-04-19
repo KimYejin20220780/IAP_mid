@@ -95,6 +95,9 @@ function setup() {
 }
 
 function draw() {
+  image(map, 0, 0);
+  arc(pacX, pacY, 40, 40, PI/4.5, PI/0.55);
+  
   if (gameState === "PLAY") { //플레이 상태
     playGame();
     
