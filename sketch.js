@@ -20,7 +20,7 @@ function draw() {
 
 }
 
-function keyPressed(){
+function keyIsDown(){
     let wallDist = 30;
     image(map, 0, 0);
     if (key === "w") {
