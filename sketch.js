@@ -305,6 +305,10 @@ function draw() {
     showGameClear();
   }
 
+  else if (gameState === "OVER") { //if 게임 실행 상태일 때의 else
+    showGameOver();
+  }
+
   function showGameClear() { //클리어 창 표시
     background(0, 150); 
     
@@ -317,10 +321,23 @@ function draw() {
     fill(255);
     text("Press 'R' to Restart", width/2, height/2 + 60);
   }
+
+  function showGameOver() { //게임오버 창 표시
+    background(0, 150); 
+    
+    fill(255, 255, 0);
+    textAlign(CENTER, CENTER); 
+    textSize(80);
+    text("GAME OVER", width/2, height/2 - 20);
+    
+    textSize(50);
+    fill(255);
+    text("Press 'R' to Restart", width/2, height/2 + 60);
+  }
 }
 
 function keyPressed() { //재시작 
-  if (gameState === "FINISHED") {
+  if (gameState === "FINISHED" || gameState === "OVER") {
     if (key === 'r' || key === 'R') { //대소문자 구분X
       resetGame();
     }
@@ -332,7 +349,8 @@ function resetGame() { //변수값 초기화
   life = 3;
   pacX = 300;
   pacY = 770;
-  
+  en1X = 1400, en1Y = 770;
+  enDir = 2;
   
   for (let d of dots) { //배열(흰 점)도 초기화
     d.isVisible = true;
