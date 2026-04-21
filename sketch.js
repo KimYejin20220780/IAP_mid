@@ -12,8 +12,9 @@ let pacY = 770; //팩맨 시작 좌표 (y)
 let dots = []; //점 배열
 let score = 0;
 
-let enX = 500, enY = 500; // 적의 시작 위치
-let enSpeed = 3;         // 적의 속도
+let enX = 1400, enY = 770; // 적의 시작 위치
+let enSpeed = 3; // 적의 속도
+let enDir = 0; // 적의 방향
 let life = 3;
 
 let gameState = "PLAY"; //초기 게임 상태 = 진행 상태
@@ -197,6 +198,10 @@ function draw() {
         let nextX = enX;
         let nextY = enY;
 
+        if (enDir === 0) nextX += enSpeed; // 오른쪽
+        else if (enDir === 1) nextX -= enSpeed; // 왼쪽
+        else if (enDir === 2) nextY -= enSpeed; // 위
+        else if (enDir === 3) nextY += enSpeed; // 아래
 
         let c = map.get(nextX, nextY);
         
@@ -205,6 +210,9 @@ function draw() {
           enX = nextX;
           enY = nextY;
         } 
+        else {
+          enDir = floor(random(4)); 
+        }
 
         image(enemy1, enX, enY, 40, 40);
       }
