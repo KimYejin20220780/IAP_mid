@@ -109,7 +109,7 @@ function setup() {
 
 function draw() {
   image(map, 0, 0); //첫 화면 세팅
-  image(enemy1, en1X, en1Y, 45, 50);
+  //image(enemy1, en1X, en1Y, 45, 50);
   fill(255, 255, 0); //첫 화면 세팅
   arc(pacX, pacY, 40, 40, PI/4.5, PI/0.55); //첫 화면 세팅
 
@@ -196,29 +196,7 @@ function draw() {
       }
 
       
-      //--------------------------------------적 로직----------------------------------------
-      function moveEnemy() {
-        let nextX = enX;
-        let nextY = enY;
-
-        if (enDir === 0) nextX += enSpeed; // 오른쪽
-        else if (enDir === 1) nextX -= enSpeed; // 왼쪽
-        else if (enDir === 2) nextY -= enSpeed; // 위
-        else if (enDir === 3) nextY += enSpeed; // 아래
-
-        let c = map.get(nextX, nextY);
-        
-        if (!(red(c) === 23 && green(c) === 142 && blue(c) === 174)) {
-
-          enX = nextX;
-          enY = nextY;
-        } 
-        else {
-          enDir = floor(random(4)); 
-        }
-
-        image(enemy1, enX, enY, 40, 50);
-      }
+      moveEnemy(); //적 로직 호출
 
       //--------------------------------------흰 점 로직----------------------------------------      
       for (let i = 0; i < dots.length; i++) { //배치된 점의 충돌 확인
@@ -235,6 +213,30 @@ function draw() {
             score += 10;
           }
         }
+      }
+
+      //--------------------------------------적 로직----------------------------------------
+      function moveEnemy() {
+        let next1X = en1X;
+        let next1Y = en1Y;
+
+        if (enDir === 0) next1X += enSpeed; // 오른쪽
+        else if (enDir === 1) next1X -= enSpeed; // 왼쪽
+        else if (enDir === 2) next1Y -= enSpeed; // 위
+        else if (enDir === 3) next1Y += enSpeed; // 아래
+
+        let c = mapF.get(next1X, next1Y);
+        
+        if (!(red(c) === 23 && green(c) === 142 && blue(c) === 174)) {
+
+          en1X = next1X;
+          en1Y = next1Y;
+        } 
+        else {
+          enDir = floor(random(4)); 
+        }
+
+        image(enemy1, en1X, en1Y, 40, 50);
       }
 
       //--------------------------------------스코어 및 라이프 텍스트----------------------------------------
