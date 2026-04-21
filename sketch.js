@@ -205,69 +205,42 @@ function draw() {
         }
       }
 
+      isWallAt();
+      function isWallAt(checkX, checkY) {
+        let c = mapF.get(checkX, checkY);
+        return (abs(red(c) - 23) < 10 && abs(green(c) - 142) < 10 && abs(blue(c) - 174) < 10);
+      }
       //--------------------------------------적 로직----------------------------------------
       moveEnemy(); //적 로직 호출
       function moveEnemy() {
-        let next1X = en1X;
-        let next1Y = en1Y;
+        let nextX = en1X;
+        let nextY = en1Y;
+        let hit = false;
 
-        if (enDir === 0) { //오른쪽
-          next1X += enSpeed;
-          let c0 = mapF.get(en1X + 20, en1Y);
-          let c1 = mapF.get(en1X + 20, en1Y - 20);
-          let c2 = mapF.get(en1X + 20, en1Y + 20); 
-          let hit0 = abs(red(c0) - 23) < 10 && abs(green(c0) - 142) < 10 && abs(blue(c0) - 174) < 10;
-          let hit1 = abs(red(c1) - 23) < 10 && abs(green(c1) - 142) < 10 && abs(blue(c1) - 174) < 10;
-          let hit2 = abs(red(c2) - 23) < 10 && abs(green(c2) - 142) < 10 && abs(blue(c2) - 174) < 10;
-          
-          if (hit0 || hit1 || hit2) {
-            enDir = floor(random(4));  
-          }
-        }
-
-        else if (enDir === 1) { // 왼쪽
-          next1X += enSpeed;
-          let c0 = mapF.get(en1X - 20, en1Y);
-          let c1 = mapF.get(en1X - 20, en1Y - 20);
-          let c2 = mapF.get(en1X - 20, en1Y + 20); 
-          let hit0 = abs(red(c0) - 23) < 10 && abs(green(c0) - 142) < 10 && abs(blue(c0) - 174) < 10;
-          let hit1 = abs(red(c1) - 23) < 10 && abs(green(c1) - 142) < 10 && abs(blue(c1) - 174) < 10;
-          let hit2 = abs(red(c2) - 23) < 10 && abs(green(c2) - 142) < 10 && abs(blue(c2) - 174) < 10;
-          
-          if (hit0 || hit1 || hit2) {
-            enDir = floor(random(4));  
-          }
-        }
-
-        else if (enDir === 2) { // 위
-          next1X += enSpeed;
-          let c0 = mapF.get(en1X, en1Y - 20);
-          let c1 = mapF.get(en1X - 20, en1Y - 20);
-          let c2 = mapF.get(en1X + 20, en1Y - 20); 
-          let hit0 = abs(red(c0) - 23) < 10 && abs(green(c0) - 142) < 10 && abs(blue(c0) - 174) < 10;
-          let hit1 = abs(red(c1) - 23) < 10 && abs(green(c1) - 142) < 10 && abs(blue(c1) - 174) < 10;
-          let hit2 = abs(red(c2) - 23) < 10 && abs(green(c2) - 142) < 10 && abs(blue(c2) - 174) < 10;
-          
-          if (hit0 || hit1 || hit2) {
-            enDir = floor(random(4));  
-          }
-        }
-
-        else if (enDir === 3) { // 아래
-          next1Y += enSpeed;
-        }
-
-        let c = mapF.get(next1X, next1Y);
-        
-        if (!(red(c) === 23 && green(c) === 142 && blue(c) === 174)) {
-          en1X = next1X;
-          en1Y = next1Y;
+        if (enDir === 0) { 
+          nextX += enSpeed;
+          if (isWallAt(nextX + 45, nextY) || 
+              isWallAt(nextX + 45, nextY + 25) || 
+              isWallAt(nextX + 45, nextY + 50)) hit = true;
         } 
-        else {
+        else if (enDir === 1) { 
+          nextX -= enSpeed;
+        } 
+        else if (enDir === 2) { 
+          nextY -= enSpeed;
+        } 
+        else if (enDir === 3) { 
+          nextY += enSpeed;
+        }
+
+        if (!hit) {
+          en1X = nextX;
+          en1Y = nextY;
+        } else {
           enDir = floor(random(4)); 
         }
 
-        image(enemy1, en1X, en1Y, 40, 50);
+        image(enemy1, en1X, en1Y, 45, 50);
       }
 
       //--------------------------------------스코어 및 라이프 텍스트----------------------------------------
