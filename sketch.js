@@ -223,7 +223,7 @@ function draw() {
 
         return false;
       }
-      
+
       //--------------------------------------적 로직----------------------------------------
       moveEnemy(); //적 로직 호출
       function moveEnemy() {
@@ -238,16 +238,25 @@ function draw() {
               isWallAt(nextX + 45, nextY + 50)) hit = true;
         } 
 
-        else if (enDir === 1) { 
+        else if (enDir === 1) {
           nextX -= enSpeed;
+          if (isWallAt(nextX, nextY) || 
+              isWallAt(nextX, nextY + 25) || 
+              isWallAt(nextX, nextY + 50)) hit = true;
         } 
 
         else if (enDir === 2) { 
           nextY -= enSpeed;
+          if (isWallAt(nextX, nextY) || 
+              isWallAt(nextX + 22, nextY) || 
+              isWallAt(nextX + 45, nextY)) hit = true;
         } 
 
         else if (enDir === 3) { 
           nextY += enSpeed;
+          if (isWallAt(nextX, nextY + 50) || 
+              isWallAt(nextX + 22, nextY + 50) || 
+              isWallAt(nextX + 45, nextY + 50)) hit = true;
         }
 
 
