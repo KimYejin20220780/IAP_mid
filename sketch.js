@@ -14,7 +14,7 @@ let score = 0;
 
 let en1X = 1400, en1Y = 770; // 적의 시작 위치
 let enSpeed = 3; // 적의 속도
-let enDir = 0; // 적의 방향
+let enDir = 2; // 적의 방향
 let life = 3;
 
 let gameState = "PLAY"; //초기 게임 상태 = 진행 상태
@@ -231,28 +231,28 @@ function draw() {
         let nextY = en1Y;
         let hit = false;
 
-        if (enDir === 0) { 
+        if (enDir === 0) { //오른쪽
           nextX += enSpeed;
           if (isWallAt(nextX + 45, nextY) || 
               isWallAt(nextX + 45, nextY + 25) || 
               isWallAt(nextX + 45, nextY + 50)) hit = true;
         } 
 
-        else if (enDir === 1) {
+        else if (enDir === 1) { //왼쪽
           nextX -= enSpeed;
           if (isWallAt(nextX, nextY) || 
               isWallAt(nextX, nextY + 25) || 
               isWallAt(nextX, nextY + 50)) hit = true;
         } 
 
-        else if (enDir === 2) { 
+        else if (enDir === 2) { //위
           nextY -= enSpeed;
           if (isWallAt(nextX, nextY) || 
               isWallAt(nextX + 22, nextY) || 
               isWallAt(nextX + 45, nextY)) hit = true;
         } 
 
-        else if (enDir === 3) { 
+        else if (enDir === 3) { //아래
           nextY += enSpeed;
           if (isWallAt(nextX, nextY + 50) || 
               isWallAt(nextX + 22, nextY + 50) || 
