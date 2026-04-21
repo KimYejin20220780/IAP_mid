@@ -207,9 +207,23 @@ function draw() {
 
       isWallAt();
       function isWallAt(checkX, checkY) {
+        if (checkX < 0 || checkX >= width || checkY < 0 || checkY >= height) {
+          return true; 
+        }
+
         let c = mapF.get(checkX, checkY);
-        return (abs(red(c) - 23) < 10 && abs(green(c) - 142) < 10 && abs(blue(c) - 174) < 10);
+
+        if (c && Array.isArray(c) && c.length >= 3) {
+          let r = c[0]; 
+          let g = c[1];
+          let b = c[2];
+
+          return (abs(r - 23) < 10 && abs(g - 142) < 10 && abs(b - 174) < 10);
+        }
+
+        return false;
       }
+      
       //--------------------------------------적 로직----------------------------------------
       moveEnemy(); //적 로직 호출
       function moveEnemy() {
@@ -223,20 +237,25 @@ function draw() {
               isWallAt(nextX + 45, nextY + 25) || 
               isWallAt(nextX + 45, nextY + 50)) hit = true;
         } 
+
         else if (enDir === 1) { 
           nextX -= enSpeed;
         } 
+
         else if (enDir === 2) { 
           nextY -= enSpeed;
         } 
+
         else if (enDir === 3) { 
           nextY += enSpeed;
         }
 
+
         if (!hit) {
           en1X = nextX;
           en1Y = nextY;
-        } else {
+        } 
+        else {
           enDir = floor(random(4)); 
         }
 
