@@ -12,7 +12,7 @@ let pacY = 770; //팩맨 시작 좌표 (y)
 let dots = []; //점 배열
 let score = 0;
 
-let enX = 1400, enY = 770; // 적의 시작 위치
+let en1X = 1400, en1Y = 770; // 적의 시작 위치
 let enSpeed = 3; // 적의 속도
 let enDir = 0; // 적의 방향
 let life = 3;
@@ -109,6 +109,7 @@ function setup() {
 
 function draw() {
   image(map, 0, 0); //첫 화면 세팅
+  image(enemy1, en1X, en1Y, 45, 50);
   fill(255, 255, 0); //첫 화면 세팅
   arc(pacX, pacY, 40, 40, PI/4.5, PI/0.55); //첫 화면 세팅
 
@@ -116,6 +117,7 @@ function draw() {
     playGame(); //게임 실행
     
     function playGame() {
+
       //--------------------------------------팩맨 움직임 로직----------------------------------------
       if (keyIsDown(LEFT_ARROW) === true) {
         image(map, 0, 0); //잔상을 지우기 위해 map을 다시 불러옴
@@ -193,6 +195,7 @@ function draw() {
         pacX = 36;  
       }
 
+      
       //--------------------------------------적 로직----------------------------------------
       function moveEnemy() {
         let nextX = enX;
@@ -205,7 +208,7 @@ function draw() {
 
         let c = map.get(nextX, nextY);
         
-        if (!isWall(c)) {
+        if (!(red(c) === 23 && green(c) === 142 && blue(c) === 174)) {
 
           enX = nextX;
           enY = nextY;
@@ -214,7 +217,7 @@ function draw() {
           enDir = floor(random(4)); 
         }
 
-        image(enemy1, enX, enY, 40, 40);
+        image(enemy1, enX, enY, 40, 50);
       }
 
       //--------------------------------------흰 점 로직----------------------------------------      
