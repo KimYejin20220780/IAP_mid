@@ -220,30 +220,30 @@ function draw() {
         let next1X = en1X;
         let next1Y = en1Y;
 
-        if (enDir === 0) {
-          next1X += enSpeed; // 오른쪽
-          let c0 = mapF.get(en1X, en1Y + 20);
-          let c1 = mapF.get(en1X - 20, en1Y + 20);
-          let c2 = mapF.get(en1X + 20, en1Y + 20);
+        if (enDir === 0) { //오른쪽
+          next1X += enSpeed;
+          let c0 = mapF.get(en1X + 20, en1Y);
+          let c1 = mapF.get(en1X + 20, en1Y - 20);
+          let c2 = mapF.get(en1X + 20, en1Y + 20); 
           let hit0 = abs(red(c0) - 23) < 10 && abs(green(c0) - 142) < 10 && abs(blue(c0) - 174) < 10;
           let hit1 = abs(red(c1) - 23) < 10 && abs(green(c1) - 142) < 10 && abs(blue(c1) - 174) < 10;
           let hit2 = abs(red(c2) - 23) < 10 && abs(green(c2) - 142) < 10 && abs(blue(c2) - 174) < 10;
           
           if (hit0 || hit1 || hit2) {
-            enDir = floor(random(4)); 
+            enDir = floor(random(4));  
           }
         }
 
-        if (enDir === 1) {
-          next1X -= enSpeed; // 왼쪽
+        if (enDir === 1) { // 왼쪽
+          next1X -= enSpeed; 
         }
 
-        if (enDir === 2) {
-          next1Y -= enSpeed; // 위
+        if (enDir === 2) { // 위
+          next1Y -= enSpeed;
         }
 
-        if (enDir === 3) {
-          next1Y += enSpeed; // 아래
+        if (enDir === 3) { // 아래
+          next1Y += enSpeed;
         }
 
         let c = mapF.get(next1X, next1Y);
