@@ -220,15 +220,25 @@ function draw() {
         let next1X = en1X;
         let next1Y = en1Y;
 
-        if (enDir === 0) next1X += enSpeed; // 오른쪽
-        else if (enDir === 1) next1X -= enSpeed; // 왼쪽
-        else if (enDir === 2) next1Y -= enSpeed; // 위
-        else if (enDir === 3) next1Y += enSpeed; // 아래
+        if (enDir === 0) {
+          next1X += enSpeed; // 오른쪽
+        }
+
+        if (enDir === 1) {
+          next1X -= enSpeed; // 왼쪽
+        }
+
+        if (enDir === 2) {
+          next1Y -= enSpeed; // 위
+        }
+
+        if (enDir === 3) {
+          next1Y += enSpeed; // 아래
+        }
 
         let c = mapF.get(next1X, next1Y);
         
         if (!(red(c) === 23 && green(c) === 142 && blue(c) === 174)) {
-
           en1X = next1X;
           en1Y = next1Y;
         } 
