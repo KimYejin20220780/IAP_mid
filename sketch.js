@@ -9,6 +9,9 @@ let enemy1;
 let pacX = 300; //팩맨 시작 좌표 (x)
 let pacY = 770; //팩맨 시작 좌표 (y)
 
+let mouthAngle = 0; // 입이 벌어지는 각도
+let mouthSpeed = 0.1; // 입이 움직이는 속도
+
 let dots = []; //점 배열
 let score = 0;
 
@@ -111,11 +114,15 @@ function draw() {
     
     function playGame() {
 
+      mouthAngle += mouthSpeed;
+  if (mouthAngle > PI / 4 || mouthAngle < 0) {
+    mouthSpeed *= -1; // 최대치에 도달하면 방향 반전
+  }
       //--------------------------------------팩맨 움직임 로직----------------------------------------
       if (keyIsDown(LEFT_ARROW) === true) {
         image(map, 0, 0); //잔상을 지우기 위해 map을 다시 불러옴
         fill(255, 255, 0); //점과 겹치지 않게 노란색도 다시 불러옴
-        arc(pacX, pacY, 40, 40, 3.8, 2.4);
+        arc(pacX, pacY, 40, 40, PI + mouthAngle, PI - mouthAngle)
         pacX -= 5; //이속, 왼쪽으로 5만큼 이동
         let c0 = mapF.get(pacX - 20, pacY); //팩맨의 왼쪽 가운데 콜라이더
         let c1 = mapF.get(pacX - 20, pacY - 20); //팩맨의 왼쪽 위 콜라이더
@@ -132,7 +139,7 @@ function draw() {
       if (keyIsDown(RIGHT_ARROW) === true) {
         image(map, 0, 0);
         fill(255, 255, 0);
-        arc(pacX, pacY, 40, 40, PI/4.5, PI/0.55);
+        arc(pacX, pacY, 40, 40, mouthAngle, TWO_PI - mouthAngle)
         pacX += 5;
         let c0 = mapF.get(pacX + 20, pacY);
         let c1 = mapF.get(pacX + 20, pacY - 20);
@@ -149,7 +156,7 @@ function draw() {
       if (keyIsDown(UP_ARROW) === true) {
         image(map, 0, 0);
         fill(255, 255, 0);
-        arc(pacX, pacY, 40, 40, -0.9, -2.2);
+        arc(pacX, pacY, 40, 40, -HALF_PI + mouthAngle, -HALF_PI - mouthAngle)
         pacY -= 5;
         let c0 = mapF.get(pacX, pacY - 20);
         let c1 = mapF.get(pacX - 20, pacY - 20);
@@ -166,7 +173,7 @@ function draw() {
       if (keyIsDown(DOWN_ARROW) === true) {
         image(map, 0, 0);
         fill(255, 255, 0);
-        arc(pacX, pacY, 40, 40, 2.3, 0.9);
+        arc(pacX, pacY, 40, 40, HALF_PI + mouthAngle, HALF_PI - mouthAngle)
         pacY += 5;
         let c0 = mapF.get(pacX, pacY + 20);
         let c1 = mapF.get(pacX - 20, pacY + 20);
