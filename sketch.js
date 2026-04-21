@@ -8,9 +8,14 @@ let mapF; //벽 모서리 채운 지도
 let enemy1;
 let pacX = 300; //팩맨 시작 좌표 (x)
 let pacY = 770; //팩맨 시작 좌표 (y)
+
 let dots = []; //점 배열
 let score = 0;
+
+let enX = 500, enY = 500; // 적의 시작 위치
+let enSpeed = 3;         // 적의 속도
 let life = 3;
+
 let gameState = "PLAY"; //초기 게임 상태 = 진행 상태
 
 let dotPositions = [
@@ -251,7 +256,7 @@ function resetGame() { //변수값 초기화
   pacY = 770;
   
   
-  for (let d of dots) { //배열도 초기화
+  for (let d of dots) { //배열(흰 점)도 초기화
     d.isVisible = true;
   }
   
