@@ -192,6 +192,23 @@ function draw() {
         pacX = 36;  
       }
 
+      //--------------------------------------적 로직----------------------------------------
+      function moveEnemy() {
+        let nextX = enX;
+        let nextY = enY;
+
+
+        let c = map.get(nextX, nextY);
+        
+        if (!isWall(c)) {
+
+          enX = nextX;
+          enY = nextY;
+        } 
+
+        image(enemy1, enX, enY, 40, 40);
+      }
+
       //--------------------------------------흰 점 로직----------------------------------------      
       for (let i = 0; i < dots.length; i++) { //배치된 점의 충돌 확인
         let d = dots[i];
