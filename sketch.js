@@ -91,10 +91,6 @@ function setup() {
   createCanvas(2816, 1536);
   background(0);
   image(mapF, 0, 0); //색 감지를 위해 불러옴
-  // image(map, 0, 0);
-  // noStroke();
-  // fill(255, 255, 0);
-  // arc(pacX, pacY, 40, 40, PI/4.5, PI/0.55);
 
   for (let i = 0; i < dotPositions.length; i++) { //점 배열 기반으로 점 생성
     dots.push({
@@ -103,13 +99,10 @@ function setup() {
       isVisible: true //기본값 = 보임
     });
   }
-  
-  
 }
 
 function draw() {
   image(map, 0, 0); //첫 화면 세팅
-  //image(enemy1, en1X, en1Y, 45, 50);
   fill(255, 255, 0); //첫 화면 세팅
   arc(pacX, pacY, 40, 40, PI/4.5, PI/0.55); //첫 화면 세팅
 
@@ -195,9 +188,6 @@ function draw() {
         pacX = 36;  
       }
 
-      
-      moveEnemy(); //적 로직 호출
-
       //--------------------------------------흰 점 로직----------------------------------------      
       for (let i = 0; i < dots.length; i++) { //배치된 점의 충돌 확인
         let d = dots[i];
@@ -216,6 +206,7 @@ function draw() {
       }
 
       //--------------------------------------적 로직----------------------------------------
+      moveEnemy(); //적 로직 호출
       function moveEnemy() {
         let next1X = en1X;
         let next1Y = en1Y;
