@@ -1,7 +1,10 @@
-//해야할 일 목록 : 
-//1. score 클리어 조건 바꾸기
-//흰색 점들 배열 더 만들기
-//적 더 만들기
+// 20220780 김예진 - 인터렉티브아트프로젝트 중간 과제
+
+// 게임 규칙 : 
+// 흰 점을 모두 먹으면 승리 (281개)
+// 적과 충돌할 때마다 라이프 1 감소 및 위치 초기화(중복 충돌 방지)
+// 3개의 라이프를 모두 잃으면 실패
+// 500점, 1000점마다 적 추가
 
 let map; //눈에 보이는 지도
 let mapF; //벽 모서리 채운 지도
@@ -612,7 +615,7 @@ function draw() {
       //--------------------------------------적 추가 로직----------------------------------------
       checkScoreEvents();
       function checkScoreEvents() {
-        if (score >= 50 && !isEnemyAdded1) {
+        if (score >= 500 && !isEnemyAdded1) { //점수가 500점이 되면 적 추가
           enemies.push({ 
             x: 1405, 
             y: 315, 
@@ -623,7 +626,7 @@ function draw() {
           isEnemyAdded1 = true; 
         }
 
-        if (score >= 100 && !isEnemyAdded2) {
+        if (score >= 1000 && !isEnemyAdded2) { //점수가 1000점이 되면 적 추가
           enemies.push({ 
             x: 1405, 
             y: 315, 
@@ -711,4 +714,3 @@ function resetGame() { //변수값 초기화
   gameState = "PLAY";
   loop(); 
 }
-
