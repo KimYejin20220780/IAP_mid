@@ -20,7 +20,7 @@ let enemies = [];
 let enSpeed = 3; // 적의 속도
 let enDir = 2; // 적의 방향
 let life = 3;
-let isEnemyAdded = false; //적 추가 로직 상태
+let isEnemyAdded1 = false; //적 추가 로직 상태
 
 let gameState = "PLAY"; //초기 게임 상태 = 진행 상태
 
@@ -611,7 +611,7 @@ function draw() {
       //--------------------------------------적 추가 로직----------------------------------------
       checkScoreEvents();
       function checkScoreEvents() {
-        if (score >= 50 && !isEnemyAdded) {
+        if (score >= 50 && !isEnemyAdded1) {
           enemies.push({ 
             x: 1405, 
             y: 315, 
@@ -620,18 +620,7 @@ function draw() {
             img: enemyImgs[5] 
           });
 
-          isEnemyAdded = true; 
-        }
-        else if (score >= 100 && !isEnemyAdded) {
-          enemies.push({ 
-            x: 1405, 
-            y: 315, 
-            dir: floor(random(4)), 
-            speed: 3, 
-            img: enemyImgs[5] 
-          });
-
-          isEnemyAdded = true; 
+          isEnemyAdded1 = true; 
         }
         
       }
@@ -702,7 +691,7 @@ function resetGame() { //변수값 초기화
   pacX = 300;
   pacY = 770;
   setupEnemies(); //적 배열 초기화(배열 내의 위치 정보 등)
-  isEnemyAdded = false; //적 추가 로작 초기화
+  isEnemyAdded1 = false; //적 추가 로작 초기화
   
   for (let d of dots) { //배열(흰 점)도 초기화
     d.isVisible = true;
