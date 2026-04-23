@@ -572,7 +572,7 @@ function draw() {
       }
 
       //--------------------------------------적 움직임 로직----------------------------------------
-      moveEnemy(); //적 로직 호출
+      moveEnemy(en); //적 움직임 로직 호출
       function moveEnemy() {
         let nextX = en.x;
         let nextY = en.y;
