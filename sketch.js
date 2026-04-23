@@ -21,6 +21,7 @@ let enSpeed = 3; // 적의 속도
 let enDir = 2; // 적의 방향
 let life = 3;
 let isEnemyAdded1 = false; //적 추가 로직 상태
+let isEnemyAdded2 = false; 
 
 let gameState = "PLAY"; //초기 게임 상태 = 진행 상태
 
@@ -619,10 +620,19 @@ function draw() {
             speed: 3, 
             img: enemyImgs[5] 
           });
-
           isEnemyAdded1 = true; 
         }
-        
+
+        if (score >= 100 && !isEnemyAdded2) {
+          enemies.push({ 
+            x: 1405, 
+            y: 315, 
+            dir: floor(random(4)), 
+            speed: 3, 
+            img: enemyImgs[6] 
+          });
+          isEnemyAdded2 = true; 
+        }
       }
 
       //--------------------------------------스코어 및 라이프 텍스트----------------------------------------
@@ -692,6 +702,7 @@ function resetGame() { //변수값 초기화
   pacY = 770;
   setupEnemies(); //적 배열 초기화(배열 내의 위치 정보 등)
   isEnemyAdded1 = false; //적 추가 로작 초기화
+  isEnemyAdded2 = false;
   
   for (let d of dots) { //배열(흰 점)도 초기화
     d.isVisible = true;
