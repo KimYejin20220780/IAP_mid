@@ -617,6 +617,7 @@ function draw() {
             y: 315, 
             img: enemyImgs[0] 
           });
+          isEnemyAdded = true; 
         }
       }
 
