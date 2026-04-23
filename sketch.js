@@ -676,8 +676,7 @@ function resetGame() { //변수값 초기화
   life = 3;
   pacX = 300;
   pacY = 770;
-  en1X = 1400, en1Y = 770;
-  enDir = 2;
+  setupEnemies();
   
   for (let d of dots) { //배열(흰 점)도 초기화
     d.isVisible = true;
