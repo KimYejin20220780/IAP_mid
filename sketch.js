@@ -18,8 +18,6 @@ let score = 0;
 
 let enemyImgs = [];
 let enemies = [];
-
-//let en1X = 1400, en1Y = 770; // 적의 시작 위치
 let enSpeed = 3; // 적의 속도
 let enDir = 2; // 적의 방향
 let life = 3;
