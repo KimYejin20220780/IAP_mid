@@ -5,7 +5,6 @@
 
 let map; //눈에 보이는 지도
 let mapF; //벽 모서리 채운 지도
-let enemy1;
 
 let pacX = 300; //팩맨 시작 좌표 (x)
 let pacY = 770; //팩맨 시작 좌표 (y)
@@ -21,6 +20,7 @@ let enemies = [];
 let enSpeed = 3; // 적의 속도
 let enDir = 2; // 적의 방향
 let life = 3;
+let isEnemyAdded = false; //적 추가 로직 상태
 
 let gameState = "PLAY"; //초기 게임 상태 = 진행 상태
 
@@ -392,7 +392,6 @@ let dotPositions = [
 function preload(){
   mapF = loadImage("MapF.png");
   map = loadImage("Map.png");
-  enemy1 = loadImage("enemyR.png");
   enemyImgs[0] = loadImage('enemyR.png');
   enemyImgs[1] = loadImage('enemyG.png');
   enemyImgs[2] = loadImage('enemyM.png');
@@ -608,6 +607,18 @@ function draw() {
 
         image(en.img, en.x, en.y, 45, 50); 
       }
+    
+      //--------------------------------------적 추가 로직----------------------------------------
+      checkScoreEvents();
+      function checkScoreEvents() {
+        if (score >= 100) {
+          enemies.push({ 
+            x: 1405, 
+            y: 315, 
+            img: enemyImgs[0] 
+          });
+        }
+      }
 
       //--------------------------------------스코어 및 라이프 텍스트----------------------------------------
       fill(255);
@@ -674,7 +685,7 @@ function resetGame() { //변수값 초기화
   life = 3;
   pacX = 300;
   pacY = 770;
-  setupEnemies();
+  setupEnemies(); //적 배열 초기화(배열 내의 위치 정보 등)
   
   for (let d of dots) { //배열(흰 점)도 초기화
     d.isVisible = true;
