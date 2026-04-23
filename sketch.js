@@ -22,6 +22,9 @@ let mouthSpeed = 0.1; // 입이 움직이는 속도
 let dots = []; //점 배열
 let score = 0;
 
+let enemyImgs = [];
+let enemies = [];
+
 let en1X = 1400, en1Y = 770; // 적의 시작 위치
 let enSpeed = 3; // 적의 속도
 let enDir = 2; // 적의 방향
@@ -397,7 +400,13 @@ let dotPositions = [
 function preload(){
   mapF = loadImage("MapF.png");
   map = loadImage("Map.png");
-  enemy1 = loadImage("Enemy1.png");
+  enemyImgs[0] = loadImage('enemyB.png');
+  enemyImgs[1] = loadImage('enemyG.png');
+  enemyImgs[2] = loadImage('enemyM.png');
+  enemyImgs[3] = loadImage('enemyO.png');
+  enemyImgs[4] = loadImage('enemyP.png');
+  enemyImgs[5] = loadImage('enemyR.png');
+  enemyImgs[6] = loadImage('enemyV.png');
 }
 
 
