@@ -19,7 +19,7 @@ let score = 0;
 let enemyImgs = [];
 let enemies = [];
 
-let en1X = 1400, en1Y = 770; // 적의 시작 위치
+//let en1X = 1400, en1Y = 770; // 적의 시작 위치
 let enSpeed = 3; // 적의 속도
 let enDir = 2; // 적의 방향
 let life = 3;
@@ -418,9 +418,13 @@ function setup() {
     });
   }
 
+}
+
+function setupEnemies() {
+  enemies = [];
   enemies.push({ x: 1405, y: 770, dir: 0, speed: 2, img: enemyImgs[0] });
   enemies.push({ x: 1405, y: 770, dir: 1, speed: 2, img: enemyImgs[1] });
-  enemies.push({ x: 1405, y: 770, dir: 2, speed: 3, img: enemyImgs[2] });
+  enemies.push({ x: 1405, y: 315, dir: 2, speed: 3, img: enemyImgs[2] });
   enemies.push({ x: 420, y: 120, dir: 2, speed: 3, img: enemyImgs[3] });
   enemies.push({ x: 2390, y: 120, dir: 2, speed: 3, img: enemyImgs[4] });
 }
