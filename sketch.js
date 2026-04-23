@@ -556,7 +556,7 @@ function draw() {
       function updateEnemies() {
         for (let i = 0; i < enemies.length; i++) { //적 로드
           let en = enemies[i]; 
-
+          
           moveEnemy(en);
 
           let d = dist(pacX, pacY, en.x + 22, en.y + 25); //적과 팩맨의 거리로 충돌 체크
@@ -566,56 +566,42 @@ function draw() {
             pacX = 300;
             pacY = 770;
             if (life <= 0) gameState = "OVER";
-            break;
+            break; 
           }
-
+        }
       }
 
       //--------------------------------------적 움직임 로직----------------------------------------
-      moveEnemy(en); //적 움직임 로직 호출
-      function moveEnemy() {
+      function moveEnemy(en) { //적 움직임 로직 호출
         let nextX = en.x;
         let nextY = en.y;
         let hit = false;
 
-        if (en.dir === 0) { //오른쪽
-          nextX += enSpeed;
-          if (isWallAt(nextX + 45, nextY) || 
-              isWallAt(nextX + 45, nextY + 25) || 
-              isWallAt(nextX + 45, nextY + 50)) hit = true;
+        if (en.dir === 0) { // 오른쪽
+          nextX += en.speed;
+          if (isWallAt(nextX + 45, nextY) || isWallAt(nextX + 45, nextY + 25) || isWallAt(nextX + 45, nextY + 50)) hit = true;
         } 
-
-        else if (en.dir === 1) { //왼쪽
-          nextX -= enSpeed;
-          if (isWallAt(nextX, nextY) || 
-              isWallAt(nextX, nextY + 25) || 
-              isWallAt(nextX, nextY + 50)) hit = true;
+        else if (en.dir === 1) { // 왼쪽
+          nextX -= en.speed;
+          if (isWallAt(nextX, nextY) || isWallAt(nextX, nextY + 25) || isWallAt(nextX, nextY + 50)) hit = true;
         } 
-
-        else if (en.dir === 2) { //위
-          nextY -= enSpeed;
-          if (isWallAt(nextX, nextY) || 
-              isWallAt(nextX + 22, nextY) || 
-              isWallAt(nextX + 45, nextY)) hit = true;
+        else if (en.dir === 2) { // 위
+          nextY -= en.speed;
+          if (isWallAt(nextX, nextY) || isWallAt(nextX + 22, nextY) || isWallAt(nextX + 45, nextY)) hit = true;
         } 
-
-        else if (en.dir === 3) { //아래
-          nextY += enSpeed;
-          if (isWallAt(nextX, nextY + 50) || 
-              isWallAt(nextX + 22, nextY + 50) || 
-              isWallAt(nextX + 45, nextY + 50)) hit = true;
+        else if (en.dir === 3) { // 아래
+          nextY += en.speed;
+          if (isWallAt(nextX, nextY + 50) || isWallAt(nextX + 22, nextY + 50) || isWallAt(nextX + 45, nextY + 50)) hit = true;
         }
-
 
         if (!hit) {
           en.x = nextX;
           en.y = nextY;
-        } 
-        else {
-          en.dir = floor(random(4)); 
+        } else {
+          en.dir = floor(random(4));
         }
 
-        image(en.img, en.x, en.y, 45, 50);
+        image(en.img, en.x, en.y, 45, 50); 
       }
 
       // //--------------------------------------적 충돌 라이프 감소 로직----------------------------------------
