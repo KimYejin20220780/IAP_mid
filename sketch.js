@@ -424,9 +424,9 @@ function setup() {
     });
   }
 
-  //enemies.push({ x: 500, y: 500, dir: 0, speed: 2, img: enemyImages[0] });
-  //enemies.push({ x: 100, y: 100, dir: 1, speed: 2, img: enemyImages[1] });
-  //enemies.push({ x: 800, y: 300, dir: 2, speed: 3, img: enemyImages[2] });
+  enemies.push({ x: 500, y: 500, dir: 0, speed: 2, img: enemyImages[0] });
+  enemies.push({ x: 100, y: 100, dir: 1, speed: 2, img: enemyImages[1] });
+  enemies.push({ x: 800, y: 300, dir: 2, speed: 3, img: enemyImages[2] });
 }
 
 function draw() {
