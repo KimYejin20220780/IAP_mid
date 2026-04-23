@@ -409,6 +409,7 @@ function setup() {
   createCanvas(2816, 1536);
   background(0);
   image(mapF, 0, 0); //색 감지를 위해 불러옴
+  setupEnemies();
 
   for (let i = 0; i < dotPositions.length; i++) { //점 배열 기반으로 점 생성
     dots.push({
