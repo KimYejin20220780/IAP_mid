@@ -11,7 +11,7 @@ let enmV;
 let enmG;
 let enmM;
 let enmO;
-let enmB;
+let enemy1;
 
 let pacX = 300; //팩맨 시작 좌표 (x)
 let pacY = 770; //팩맨 시작 좌표 (y)
@@ -400,6 +400,7 @@ let dotPositions = [
 function preload(){
   mapF = loadImage("MapF.png");
   map = loadImage("Map.png");
+  enemy1 = loadImage("enemyR.png");
   enemyImgs[0] = loadImage('enemyB.png');
   enemyImgs[1] = loadImage('enemyG.png');
   enemyImgs[2] = loadImage('enemyM.png');
@@ -422,6 +423,10 @@ function setup() {
       isVisible: true //기본값 = 보임
     });
   }
+
+  enemies.push({ x: 500, y: 500, dir: 0, speed: 2, img: enemyImages[0] });
+  enemies.push({ x: 100, y: 100, dir: 1, speed: 2, img: enemyImages[1] });
+  enemies.push({ x: 800, y: 300, dir: 2, speed: 3, img: enemyImages[2] });
 }
 
 function draw() {
