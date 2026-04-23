@@ -611,7 +611,7 @@ function draw() {
       //--------------------------------------적 추가 로직----------------------------------------
       checkScoreEvents();
       function checkScoreEvents() {
-        if (score >= 500 && !isEnemyAdded) {
+        if (score >= 50 && !isEnemyAdded) {
           enemies.push({ 
             x: 1405, 
             y: 315, 
@@ -622,6 +622,18 @@ function draw() {
 
           isEnemyAdded = true; 
         }
+        else if (score >= 100 && !isEnemyAdded) {
+          enemies.push({ 
+            x: 1405, 
+            y: 315, 
+            dir: floor(random(4)), 
+            speed: 3, 
+            img: enemyImgs[5] 
+          });
+
+          isEnemyAdded = true; 
+        }
+        
       }
 
       //--------------------------------------스코어 및 라이프 텍스트----------------------------------------
