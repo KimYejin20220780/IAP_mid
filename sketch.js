@@ -509,7 +509,7 @@ function draw() {
           ellipse(d.x, d.y, 15, 15); 
 
           let distance = dist(pacX, pacY, d.x, d.y);
-          if (distance < 25) { //팩맨 중심이 아닌 가장자리가 충돌을 감지하도록 수치 조정
+          if (distance < 40) { //팩맨 중심이 아닌 가장자리가 충돌을 감지하도록 수치 조정
             d.isVisible = false; //닿았으면 점 삭제 
             score += 10;
           }
