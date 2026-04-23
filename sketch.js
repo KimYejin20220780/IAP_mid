@@ -611,13 +611,13 @@ function draw() {
       //--------------------------------------적 추가 로직----------------------------------------
       checkScoreEvents();
       function checkScoreEvents() {
-        if (score >= 100 && !isEnemyAdded) {
+        if (score >= 500 && !isEnemyAdded) {
           enemies.push({ 
             x: 1405, 
             y: 315, 
             dir: floor(random(4)), 
             speed: 3, 
-            img: enemyImgs[0] 
+            img: enemyImgs[5] 
           });
 
           isEnemyAdded = true; 
