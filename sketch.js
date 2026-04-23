@@ -551,6 +551,11 @@ function draw() {
         return false;
       }
 
+      //--------------------------------------적 로드 및 충돌 로직----------------------------------------
+      updateEnemies();
+      function updateEnemies() {
+
+      }
       //--------------------------------------적 움직임 로직----------------------------------------
       moveEnemy(); //적 로직 호출
       function moveEnemy() {
@@ -598,17 +603,17 @@ function draw() {
         image(enemy1, en1X, en1Y, 45, 50);
       }
 
-      //--------------------------------------적 충돌 라이프 감소 로직----------------------------------------
-      let distanceToEnemy = dist(pacX, pacY, en1X + 22, en1Y + 25); 
+      // //--------------------------------------적 충돌 라이프 감소 로직----------------------------------------
+      // let distanceToEnemy = dist(pacX, pacY, en1X + 22, en1Y + 25); 
 
-      if (distanceToEnemy < 40) { 
-        life -= 1; 
+      // if (distanceToEnemy < 40) { 
+      //   life -= 1; 
         
-        pacX = 300;    
-        pacY = 770;
+      //   pacX = 300;    
+      //   pacY = 770;
 
-        if (life <= 0) gameState = "OVER";
-      }
+      //   if (life <= 0) gameState = "OVER";
+      // }
 
       //--------------------------------------스코어 및 라이프 텍스트----------------------------------------
       fill(255);
