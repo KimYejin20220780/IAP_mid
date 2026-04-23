@@ -554,7 +554,10 @@ function draw() {
       //--------------------------------------적 로드 및 충돌 로직----------------------------------------
       updateEnemies();
       function updateEnemies() {
-        moveEnemy(en);
+        for (let i = 0; i < enemies.length; i++) { //적 로드
+          let en = enemies[i]; 
+
+          moveEnemy(en);
 
           let d = dist(pacX, pacY, en.x + 22, en.y + 25); //적과 팩맨의 거리로 충돌 체크
           
@@ -567,11 +570,12 @@ function draw() {
           }
 
       }
+
       //--------------------------------------적 움직임 로직----------------------------------------
       moveEnemy(); //적 로직 호출
       function moveEnemy() {
-        let nextX = en1X;
-        let nextY = en1Y;
+        let nextX = en.x;
+        let nextY = en.y;
         let hit = false;
 
         if (enDir === 0) { //오른쪽
