@@ -578,28 +578,28 @@ function draw() {
         let nextY = en.y;
         let hit = false;
 
-        if (enDir === 0) { //오른쪽
+        if (en.dir === 0) { //오른쪽
           nextX += enSpeed;
           if (isWallAt(nextX + 45, nextY) || 
               isWallAt(nextX + 45, nextY + 25) || 
               isWallAt(nextX + 45, nextY + 50)) hit = true;
         } 
 
-        else if (enDir === 1) { //왼쪽
+        else if (en.dir === 1) { //왼쪽
           nextX -= enSpeed;
           if (isWallAt(nextX, nextY) || 
               isWallAt(nextX, nextY + 25) || 
               isWallAt(nextX, nextY + 50)) hit = true;
         } 
 
-        else if (enDir === 2) { //위
+        else if (en.dir === 2) { //위
           nextY -= enSpeed;
           if (isWallAt(nextX, nextY) || 
               isWallAt(nextX + 22, nextY) || 
               isWallAt(nextX + 45, nextY)) hit = true;
         } 
 
-        else if (enDir === 3) { //아래
+        else if (en.dir === 3) { //아래
           nextY += enSpeed;
           if (isWallAt(nextX, nextY + 50) || 
               isWallAt(nextX + 22, nextY + 50) || 
@@ -608,14 +608,14 @@ function draw() {
 
 
         if (!hit) {
-          en1X = nextX;
-          en1Y = nextY;
+          en.x = nextX;
+          en.y = nextY;
         } 
         else {
-          enDir = floor(random(4)); 
+          en.dir = floor(random(4)); 
         }
 
-        image(enemy1, en1X, en1Y, 45, 50);
+        image(en.img, en.x, en.y, 45, 50);
       }
 
       // //--------------------------------------적 충돌 라이프 감소 로직----------------------------------------
