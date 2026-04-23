@@ -456,7 +456,7 @@ function draw() {
         let c0 = mapF.get(pacX - 20, pacY); //팩맨의 왼쪽 가운데 콜라이더
         let c1 = mapF.get(pacX - 20, pacY - 20); //팩맨의 왼쪽 위 콜라이더
         let c2 = mapF.get(pacX - 20, pacY + 20); //팩맨의 왼쪽 아래 콜라이더
-        let hit0 = abs(red(c0) - 23) < 10 && abs(green(c0) - 142) < 10 && abs(blue(c0) - 174) < 10;
+        let hit0 = abs(red(c0) - 23) < 10 && abs(green(c0) - 142) < 10 && abs(blue(c0) - 174) < 10; //콜라이더0과 닿은 색이 벽의 색(오차범위 10고려)이라면 = hitt0
         let hit1 = abs(red(c1) - 23) < 10 && abs(green(c1) - 142) < 10 && abs(blue(c1) - 174) < 10;
         let hit2 = abs(red(c2) - 23) < 10 && abs(green(c2) - 142) < 10 && abs(blue(c2) - 174) < 10;
 
@@ -517,18 +517,18 @@ function draw() {
       }
 
       //--------------------------------------워프 로직----------------------------------------
-      if (pacX < 10) { //워프
-        pacX = 2780; 
+      if (pacX < 10) { //팩맨의 x좌표가 10보다 작다면
+        pacX = 2780; //x2780 으로 수정(이동)
       } 
-      else if (pacX > 2806) { 
-        pacX = 36;  
+      else if (pacX > 2806) { //2806보다 크다면
+        pacX = 36; //36으로 이동
       }
 
       //--------------------------------------흰 점 로직----------------------------------------      
       for (let i = 0; i < dots.length; i++) { //배치된 점의 충돌 확인
-        let d = dots[i];
+        let d = dots[i]; //배열 불러오기
 
-        if (d.isVisible) { //배열대로 흰 점 생성
+        if (d.isVisible) { //불러온 배열대로 흰 점 생성
           fill(255);
           noStroke();
           ellipse(d.x, d.y, 15, 15); 
@@ -536,7 +536,7 @@ function draw() {
           let distance = dist(pacX, pacY, d.x, d.y);
           if (distance < 40) { //팩맨 중심이 아닌 가장자리가 충돌을 감지하도록 수치 조정
             d.isVisible = false; //닿았으면 점 삭제 
-            score += 10;
+            score += 10; //점수는 10점 추가
           }
         }
       }
@@ -544,11 +544,7 @@ function draw() {
       //--------------------------------------적 벽 감지 로직----------------------------------------
       isWallAt();
       function isWallAt(checkX, checkY) {
-        if (checkX < 0 || checkX >= width || checkY < 0 || checkY >= height) {
-          return true; 
-        }
-
-        let c = mapF.get(checkX, checkY);
+        let c = mapF.get(checkX, checkY); //체크x와 체크y가 닿은 곳의 색 불러오기
 
         if (c && Array.isArray(c) && c.length >= 3) {
           let r = c[0]; 
@@ -557,7 +553,6 @@ function draw() {
 
           return (abs(r - 23) < 10 && abs(g - 142) < 10 && abs(b - 174) < 10);
         }
-
         return false;
       }
 
@@ -571,11 +566,11 @@ function draw() {
 
           let d = dist(pacX, pacY, en.x + 22, en.y + 25); //적과 팩맨의 거리로 충돌 체크
           
-          if (d < 40) {
+          if (d < 40) { //적과 닿으면 라이프 감소, 위치 초기화
             life -= 1;
             pacX = 300;
             pacY = 770;
-            if (life <= 0) gameState = "OVER";
+            if (life <= 0) gameState = "OVER"; //라이프가 0이 될 경우, 게임 오버 상태로 변경
             break; 
           }
         }
