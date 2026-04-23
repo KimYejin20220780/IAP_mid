@@ -1,34 +1,35 @@
 // 20220780 김예진 - 인터렉티브아트프로젝트 중간 과제
 
 // 게임 규칙 : 
+// 방향키(화살표 키)로 조작 
 // 흰 점을 모두 먹으면 승리 (281개)
 // 적과 충돌할 때마다 라이프 1 감소 및 위치 초기화(중복 충돌 방지)
 // 3개의 라이프를 모두 잃으면 실패
 // 500점, 1000점마다 적 추가
 
 let map; //눈에 보이는 지도
-let mapF; //벽 모서리 채운 지도
+let mapF; //벽 모서리 채운 지도 (충돌 감지)
 
 let pacX = 300; //팩맨 시작 좌표 (x)
 let pacY = 770; //팩맨 시작 좌표 (y)
 
-let mouthAngle = 0; // 입이 벌어지는 각도
-let mouthSpeed = 0.1; // 입이 움직이는 속도
+let mouthAngle = 0; //입이 벌어지는 각도
+let mouthSpeed = 0.1; //입이 움직이는 속도
 
 let dots = []; //점 배열
 let score = 0;
 
-let enemyImgs = [];
+let enemyImgs = []; //적 배열
 let enemies = [];
-let enSpeed = 3; // 적의 속도
-let enDir = 2; // 적의 방향
+let enSpeed = 3; //적의 속도
+let enDir = 2; //적의 방향
 let life = 3;
 let isEnemyAdded1 = false; //적 추가 로직 상태
 let isEnemyAdded2 = false; 
 
 let gameState = "PLAY"; //초기 게임 상태 = 진행 상태
 
-let dotPositions = [
+let dotPositions = [ //흰 점 배열
   {x: 415, y: 125}, //가로줄 1
   {x: 491, y: 125},
   {x: 566, y: 125},
@@ -393,7 +394,7 @@ let dotPositions = [
   {x: 2345, y: 1410},
 ];
 
-function preload(){
+function preload(){ //이미지들 미리 불러오기
   mapF = loadImage("MapF.png");
   map = loadImage("Map.png");
   enemyImgs[0] = loadImage('enemyR.png');
@@ -410,7 +411,7 @@ function setup() {
   createCanvas(2816, 1536);
   background(0);
   image(mapF, 0, 0); //색 감지를 위해 불러옴
-  setupEnemies();
+  setupEnemies(); //적 생성 함수
 
   for (let i = 0; i < dotPositions.length; i++) { //점 배열 기반으로 점 생성
     dots.push({
@@ -423,7 +424,7 @@ function setup() {
 }
 
 function setupEnemies() {
-  enemies = [];
+  enemies = []; //배열 초기화
   enemies.push({ x: 1405, y: 770, dir: 0, speed: 2, img: enemyImgs[0] });
   enemies.push({ x: 1405, y: 770, dir: 1, speed: 2, img: enemyImgs[1] });
   enemies.push({ x: 1405, y: 315, dir: 2, speed: 3, img: enemyImgs[2] });
@@ -440,11 +441,12 @@ function draw() {
     playGame(); //게임 실행
     
     function playGame() {
+      //--------------------------------------팩맨 애니메이션 로직----------------------------------------
+      mouthAngle += mouthSpeed; 
+      if (mouthAngle > PI / 4 || mouthAngle < 0) {
+        mouthSpeed *= -1; // 최대치에 도달하면 방향 반전
+      }
 
-      mouthAngle += mouthSpeed;
-  if (mouthAngle > PI / 4 || mouthAngle < 0) {
-    mouthSpeed *= -1; // 최대치에 도달하면 방향 반전
-  }
       //--------------------------------------팩맨 움직임 로직----------------------------------------
       if (keyIsDown(LEFT_ARROW) === true) {
         image(map, 0, 0); //잔상을 지우기 위해 map을 다시 불러옴
