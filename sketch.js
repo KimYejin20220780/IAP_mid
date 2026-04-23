@@ -5,7 +5,14 @@
 
 let map; //눈에 보이는 지도
 let mapF; //벽 모서리 채운 지도
-let enemy1;
+let enmR;
+let enmP;
+let enmV;
+let enmG;
+let enmM;
+let enmO;
+let enmB;
+
 let pacX = 300; //팩맨 시작 좌표 (x)
 let pacY = 770; //팩맨 시작 좌표 (y)
 
