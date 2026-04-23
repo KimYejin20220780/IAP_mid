@@ -421,6 +421,8 @@ function setup() {
   enemies.push({ x: 1405, y: 770, dir: 0, speed: 2, img: enemyImgs[0] });
   enemies.push({ x: 1405, y: 770, dir: 1, speed: 2, img: enemyImgs[1] });
   enemies.push({ x: 1405, y: 770, dir: 2, speed: 3, img: enemyImgs[2] });
+  enemies.push({ x: 420, y: 120, dir: 2, speed: 3, img: enemyImgs[3] });
+  enemies.push({ x: 2390, y: 120, dir: 2, speed: 3, img: enemyImgs[4] });
 }
 
 function draw() {
@@ -554,8 +556,8 @@ function draw() {
       //--------------------------------------적 로드 및 충돌 로직----------------------------------------
       updateEnemies();
       function updateEnemies() {
-        for (let i = 0; i < enemies.length; i++) { //적 로드
-          let en = enemies[i]; 
+        for (let i = 0; i < enemies.length; i++) { 
+          let en = enemies[i]; //배열에 있는 적 로드
           
           moveEnemy(en);
 
@@ -603,18 +605,6 @@ function draw() {
 
         image(en.img, en.x, en.y, 45, 50); 
       }
-
-      // //--------------------------------------적 충돌 라이프 감소 로직----------------------------------------
-      // let distanceToEnemy = dist(pacX, pacY, en1X + 22, en1Y + 25); 
-
-      // if (distanceToEnemy < 40) { 
-      //   life -= 1; 
-        
-      //   pacX = 300;    
-      //   pacY = 770;
-
-      //   if (life <= 0) gameState = "OVER";
-      // }
 
       //--------------------------------------스코어 및 라이프 텍스트----------------------------------------
       fill(255);
