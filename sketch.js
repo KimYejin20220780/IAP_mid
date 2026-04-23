@@ -401,12 +401,12 @@ function preload(){
   mapF = loadImage("MapF.png");
   map = loadImage("Map.png");
   enemy1 = loadImage("enemyR.png");
-  enemyImgs[0] = loadImage('enemyB.png');
+  enemyImgs[0] = loadImage('enemyR.png');
   enemyImgs[1] = loadImage('enemyG.png');
   enemyImgs[2] = loadImage('enemyM.png');
   enemyImgs[3] = loadImage('enemyO.png');
   enemyImgs[4] = loadImage('enemyP.png');
-  enemyImgs[5] = loadImage('enemyR.png');
+  enemyImgs[5] = loadImage('enemyB.png');
   enemyImgs[6] = loadImage('enemyV.png');
 }
 
@@ -424,9 +424,9 @@ function setup() {
     });
   }
 
-  enemies.push({ x: 500, y: 500, dir: 0, speed: 2, img: enemyImages[0] });
-  enemies.push({ x: 100, y: 100, dir: 1, speed: 2, img: enemyImages[1] });
-  enemies.push({ x: 800, y: 300, dir: 2, speed: 3, img: enemyImages[2] });
+  enemies.push({ x: 500, y: 500, dir: 0, speed: 2, img: enemyImgs[0] });
+  enemies.push({ x: 100, y: 100, dir: 1, speed: 2, img: enemyImgs[1] });
+  enemies.push({ x: 800, y: 300, dir: 2, speed: 3, img: enemyImgs[2] });
 }
 
 function draw() {
