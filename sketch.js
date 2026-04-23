@@ -690,6 +690,7 @@ function resetGame() { //변수값 초기화
   pacX = 300;
   pacY = 770;
   setupEnemies(); //적 배열 초기화(배열 내의 위치 정보 등)
+  isEnemyAdded = false; //적 추가 로작 초기화
   
   for (let d of dots) { //배열(흰 점)도 초기화
     d.isVisible = true;
